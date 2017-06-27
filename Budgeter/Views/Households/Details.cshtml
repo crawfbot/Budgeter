@@ -1,0 +1,67 @@
+﻿@model Budgeter.Models.Household
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<br />
+<div class="container custbg shadow">
+    <h2>
+        @Model.Name Household Details
+        <a href="@Url.Action("Create", "Invitations", new { id = Model.Id })" title="Invite New Household Member" class="pull-right text-success">
+            <i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Send Invitation
+        </a>
+    </h2>
+    <hr />
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="small text-muted text-uppercase">
+                    <strong>@Html.DisplayNameFor(model => model.Name)</strong>
+                </th>
+                <th class="small text-muted text-uppercase">
+                    <strong>@Html.DisplayNameFor(model => model.Created)</strong>
+                </th>
+                <th class="small text-muted text-uppercase">
+                    <strong>@Html.DisplayNameFor(model => model.Updated)</strong>
+                </th>
+
+                <th class="small text-muted text-uppercase">
+                    <strong>
+                        Household Members
+
+                    </strong>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="v-a-m"><span>@Html.DisplayFor(model => model.Name)</span></td>
+                <td class="v-a-m"><span>@Html.DisplayFor(model => model.Created)</span></td>
+                <td class="v-a-m"><span>@Html.DisplayFor(model => model.Updated)</span></td>
+
+                <td class="v-a-m">
+
+                    @foreach (var user in Model.Members)
+                    {
+
+                        <span> @user.DisplayName <br /></span>
+
+                    }
+
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+    <hr />
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+    <br />
+</div>

@@ -1,0 +1,71 @@
+﻿@model Budgeter.Models.FinAccount
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<br />
+<div class="container custbg shadow">
+    <h2>Account Details</h2>
+
+    <div>
+        
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Household Name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Household.Name)
+            </dd>
+
+            <dt>
+                Account Name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Balance)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Balance)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReconciledBalance)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReconciledBalance)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Created)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Updated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Updated)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+<br />
+</div> 

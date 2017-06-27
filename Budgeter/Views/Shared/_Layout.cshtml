@@ -1,0 +1,332 @@
+﻿@using Budgeter.Models
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- START Head -->
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>
+        Money Tree-@ViewBag.Title
+    </title>
+
+    <link rel="icon" type="image/png" href="~/Assets/images/favicon-32x32.png" sizes="32x32" />
+
+    <!-- SCSS Output -->
+
+    <link href="~/Assets/stylesheets/app.min.e0bb64e7.css" rel="stylesheet" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Assets/vendor/css/lib.min.css" rel="stylesheet" />
+
+    <!-- jekyll settings -->
+    <script>
+        var ASSET_PATH_BASE = '';
+    </script>
+</head>
+<!-- END Head -->
+
+<body class="sidebar-dark-success loading">
+    <div id="initial-loader">
+        <div>
+            <div class="initial-loader-top">
+                <img class="initial-loader-logo" src="~/Assets/images/logo-tree.png" alt="Loader">
+                <div class="loader loader--style1">
+                    <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewbox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                    
+                    <g>
+                    <path fill="#2d2d2d" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z" />
+                    <path fill="#2c97de" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z" />
+
+
+
+                        
+                    </g>
+                </svg>
+                </div>
+            </div>
+            <div class="initial-loader-bottom">
+                Loading. Please Wait. <i class="fa fa-cricle" style="opacity: 0"></i>
+            </div>
+        </div>
+    </div>
+    <!-- Bower Libraries Scripts -->
+    <script src="~/Assets/vendor/js/lib.min.js"></script>
+    <!-- ///Bower Libraries Scripts -->
+
+
+    <div class="main-wrap custbg">
+
+@if (User.Identity.IsAuthenticated)
+{
+        <nav class="navigation custbg">
+            <!-- START Navbar -->
+            <div class="navbar-inverse navbar navbar-fixed-top custbg">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <a class="current navbar-brand" href="@Url.Action("Index", "Home" )">
+                            <img alt="Logo" class="h-20" src="~/Assets/images/logo-tree3x.png">
+                        </a>
+                        <button class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+                            <i class="fa fa-fw fa-user text-white"></i>
+                        </button>
+                        <button class="action-sidebar-open navbar-toggle collapsed" type="button">
+                            <i class="fa fa-fw fa-bars text-white"></i>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbar">
+
+                        <!-- START Left Side Navbar -->
+                        <ul class="nav navbar-nav navbar-left clearfix yamm">
+                            <!-- START Switch Sidebar ON/OFF -->
+                            <li id="sidebar-switch" class="hidden-xs">
+                                <a class="action-toggle-sidebar-slim" data-placement="bottom" data-toggle="tooltip" href="#" title="Slim sidebar on/off">
+                                    <i class="fa fa-lg fa-bars fa-fw"></i>
+                                </a>
+                            </li>
+                            <!-- END Switch Sidebar ON/OFF -->
+                        </ul>
+                        <!-- END Left Side Navbar -->
+
+
+
+
+                        <!-- START Right Side Navbar -->
+
+
+                        <ul class="nav navbar-nav navbar-right">
+
+<!-- ===================================================================================================================================================================================-->
+                            @*<li role="separator" class="divider hidden-lg hidden-md hidden-sm"></li>
+                            <li class="dropdown-header hidden-lg hidden-md hidden-sm text-gray-lighter text-uppercase">
+                                <strong>Your Profile</strong>
+                            </li>
+                            <!-- START Notification -->
+                            <li class="dropdown">
+                                <!-- START Icon Notification with Badge (10)-->
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+                                    <i class="fa fa-lg fa-fw fa-bell hidden-xs"></i>
+
+                                    <!---TO DO: MAKE BADGE INTERACTIVE -->
+                                    <span class="hidden-sm hidden-md hidden-lg">
+                                        Notifications <span class="badge badge-warning m-l-1">#</span>
+                                    </span>
+                                    <span class="label label-warning label-pill label-with-icon hidden-xs">#</span>
+                                    <span class="fa fa-fw fa-angle-down hidden-lg hidden-md hidden-sm"></span>
+                                    <!---//END -- MAKE BADGE INTERACTIVE -->
+
+                                </a>
+                                <!-- END Icon Notification with Badge (10)-->
+                                <!-- START Notification Dropdown Menu -->
+                                <ul class="dropdown-menu dropdown-menu-right p-t-0 b-t-0 p-b-0 b-b-0 b-a-0">
+                                    <li>
+                                        <div class="yamm-content p-t-0 p-r-0 p-l-0 p-b-0">
+                                            <ul class="list-group m-b-0 b-b-0">
+                                                <li class="list-group-item b-r-0 b-l-0 b-r-0 b-t-r-0 b-t-l-0 b-b-2 w-350">
+                                                    <small class="text-uppercase">
+                                                        <strong>Notifications</strong>
+                                                    </small>
+                                                    
+                                                </li>
+                                                <!-- START Scroll Inside Panel -->
+                                                <li class="list-group-item b-a-0 p-x-0 p-y-0 b-t-0">
+                                                    <div class="scroll-300 custom-scrollbar">
+
+                                                     <!-- BEGIN NOTIFICATION MESSAGE -->
+                                                        <a href="../pages/timeline.html" class="list-group-item b-r-0 b-l-0">
+                                                            <div class="media">
+                                                                <div class="media-left">
+                                                                    <span class="fa-stack fa-lg">
+                                                                        <i class="fa fa-circle-thin fa-stack-2x text-warning"></i>
+                                                                        <i class="fa fa-exclamation fa-stack-1x fa-fw text-warning"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h5 class="m-t-0">
+                                                                        <span>Use the digital HTTP application, then you can connect the optical array!</span>
+                                                                    </h5>
+                                                                    <p class="text-nowrap small m-b-0">
+                                                                        <span>06-Jan-2012, 04:13</span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <!-- END NOTIFICATION MESSAGE -->
+                                                    </div>
+                                                </li>
+                                                <!-- END Scroll Inside Panel -->
+                                                <li class="list-group-item b-a-0 p-x-0 p-y-0 r-a-0 b-b-0">
+                                                    <a class="list-group-item text-center b-r-0 b-b-0 b-l-0 b-r-b-r-0 b-r-b-l-0" href="../pages/timeline.html">
+                                                        See All Notifications <i class="fa fa-angle-right"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- END Notification Dropdown Menu -->
+                            </li>*@
+                            <!-- END Notification -->
+<!-- =================================================================================================================================================================================-->
+
+
+
+                            <li>@Html.Partial("_LoginPartial")</li>
+                        </ul>
+
+
+                        <!-- END Right Side Navbar -->
+
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- END Navbar -->
+            <!-- START Sidebars -->
+            <aside class="navbar-default sidebar custbg" style="border-right: none !important;">
+                <div class="sidebar-overlay-head">
+                    <img src="~/Assets/images/logo-tree3x.png" alt="Logo" />
+                    <a href="javascript:void(0)" class="sidebar-switch action-sidebar-close">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+                <div class="sidebar-logo">
+                    <img class="logo-default" src="assets/images/spin-logo-big-inverse-2X.png" alt="Logo" width="53">
+                    <img class="logo-slim" src="assets/images/spin-logo-slim.png" alt="Logo">
+                </div>
+
+                <div class="sidebar-content" style="border-right: none !important;">
+                    <!-- START Tree -->
+                    <ul class="side-menu m-t-2">
+
+                        <li class="Dashboards">
+                            <a href="@Url.Action("Index", "Home" )" title="Dashboard">
+                                <i class="fa fa-lg fa-tachometer fa-fw"></i><span class="nav-label">Dashboard</span>
+                                @*<span class="pull-right label label-primary label-outline text-uppercase">New</span>*@
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" title="Household">
+                                <i class="fa  fa-users fa-lg fa-fw"></i><span class="nav-label">Household</span><i class="fa arrow"></i>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("Index", "Households" )">
+                                        <span class="nav-label">My Household</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Budgets" )">
+                                        <span class="nav-label">My Budgets</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Transactions" )">
+                                        <span class="nav-label">My Transactions</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("Index", "FinAccounts" )" title="Accounts">
+                                <i class="fa fa-lg fa-money fa-fw"></i><span class="nav-label">Accounts</span>
+                                @*<span class="pull-right label label-primary label-outline text-uppercase">New</span>*@
+                            </a>
+                        </li>
+
+                        @*<li>
+                            <a href="#" title="Profile">
+                                <i class="fa fa-address-book-o fa-fw fa-lg"></i><span class="nav-label">Profile</span> <i class="fa arrow"></i>
+                            </a>
+
+                            @*<ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="nav-label">Level One</span> <i class="fa arrow"></i>
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a href="#"><span class="nav-label">Sub-level</span></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                        </li>*@
+
+                    </ul>
+                    <!-- END Tree  -->
+                    @*<div class="sidebar-default-visible"><hr></div>*@   
+
+                </div>
+            </aside>
+            <!-- END Sidebars -->
+        </nav>
+}
+        <div class="content money">
+
+            @RenderBody()
+        </div>
+
+        <!-- START Footer PUT FOOTER ON LANDING PAGE -->
+                @*<footer class="custbg">
+            <div class="container-fluid">
+                <p class="text-gray-dark">
+                    &copy; @DateTime.Now.Year - Jacob Crawford
+                </p>
+            </div>
+        </footer>*@
+        <!-- END Footer -->
+    </div>
+
+    <script>
+        // Hide loader
+        (function () {
+            var bodyElement = document.querySelector('body');
+            bodyElement.classList.add('loading');
+
+            document.addEventListener('readystatechange', function () {
+                if (document.readyState === 'complete') {
+                    var bodyElement = document.querySelector('body');
+                    var loaderElement = document.querySelector('#initial-loader');
+
+                    bodyElement.classList.add('loaded');
+                    setTimeout(function () {
+                        bodyElement.removeChild(loaderElement);
+                        bodyElement.classList.remove('loading', 'loaded');
+                    }, 200);
+                }
+            });
+        })();
+    </script>
+
+
+
+    <!-- Bower Libraries Styles -->
+    
+    <script src="~/Assets/javascript/app.min.13a3a368.js"></script>
+    <script src="~/Assets/javascript/plugins-init.js"></script>
+    <script src="~/Assets/javascript/switchery-settings.js"></script>
+
+    <script src="~/Assets/vendor/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/vendor/js/dataTables.bootstrap.min.js"></script>
+
+    <script src="~/Scripts/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.13/sorting/datetime-moment.js" > </script>
+
+    
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

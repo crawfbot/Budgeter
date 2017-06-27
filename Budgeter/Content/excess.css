@@ -1,0 +1,36 @@
+﻿
+body .sub-navbar.sub-navbar__header-breadcrumbs {
+    /*background-image: url('../images/perforated metal.jpg');*/
+
+    /*background: #44710b;
+    background-image: url('../images/ZenBG-1.png'), url('../images/ZenBG-2.png');
+    background-repeat: repeat-x, repeat;*/
+    /*Use all of these to combat various browser editions*/
+    /*background: #608d27;  
+    background: -webkit-linear-gradient(to right, #608d27, #44710b);  
+    background: linear-gradient(to right, #608d27, #44710b);*/
+    /*background: linear-gradient(-45deg, #608d27 25%, transparent 25%, transparent 75%, #44710b 75%, #44710b) 0 0, linear-gradient(-45deg, #44710b 25%, transparent 25%, transparent 75%, #608d27 75%, #608d27) 1em 1em, linear-gradient(45deg, #44710b 17%, transparent 17%, transparent 25%, #44710b 25%, #44710b 36%, transparent 36%, transparent 64%, #44710b 64%, #44710b 75%, transparent 75%, transparent 83%, #44710b 83%) 1em 1em;
+    background-color: #608d27;
+    background-size: 2em 2em;*/
+    /*Must remain in this order:*/
+    /*background: #44710b;
+    background: linear-gradient(115deg, transparent 75%, rgba(96,141,39,.8) 75%) 0 0, linear-gradient(245deg, transparent 75%, rgba(96,141,39,.8) 75%) 0 0, linear-gradient(115deg, transparent 75%, rgba(96,141,39,.8) 75%) 7px -15px, linear-gradient(245deg, transparent 75%, rgba(96,141,39,.8) 75%) 7px -15px, #44710b;
+    background-size: 15px 30px*/
+}
+
+.content {
+
+    /*background: linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px, linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px, linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px, linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px, linear-gradient(90deg, #1b1b1b 10px, transparent 10px), linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);*/
+    /*background-color: #131313;
+    background-size: 20px 20px;
+
+   
+    background: radial-gradient(black 15%, transparent 16%) 0 0, radial-gradient(black 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color:#282828;
+    /*background-color: #215f00;*/
+    /*background-size:16px 16px;*/
+
+    /*background: #44710b;
+    background-image: url('../images/ZenBG-1.png'), url('../images/ZenBG-2.png');
+    background-repeat: repeat-x, repeat;*/
+}

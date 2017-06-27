@@ -1,0 +1,53 @@
+﻿@model Budgeter.Models.Household
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<br />
+<div class="container custbg shadow">
+    <h2>Delete @Model.Name Household?</h2>
+    <hr />
+
+   
+
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="small text-muted text-uppercase">
+                        <strong>@Html.DisplayNameFor(model => model.Name)</strong>
+                    </th>
+                    <th class="small text-muted text-uppercase">
+                        <strong>@Html.DisplayNameFor(model => model.Created)</strong>
+                    </th>
+                    <th class="small text-muted text-uppercase">
+                        <strong>@Html.DisplayNameFor(model => model.Updated)</strong>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="v-a-m"><span>@Html.DisplayFor(model => model.Name)</span></td>
+                    <td class="v-a-m"><span>@Html.DisplayFor(model => model.Created)</span></td>
+                    <td class="v-a-m"><span>@Html.DisplayFor(model => model.Updated)</span></td>
+
+                </tr>
+
+            </tbody>
+        </table>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-block btn-danger" /> 
+                <hr />
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+
+    <br />
+  </div>

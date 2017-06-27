@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+ <!-- START Head -->
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    <title>
+         SPIN | Login 
+    </title>
+
+
+
+    <!-- SCSS Output -->
+    <link rel="stylesheet" href="../assets/stylesheets/app.min.e0bb64e7.css">
+
+ 
+
+    <!-- jekyll settings -->
+    <script>
+        var ASSET_PATH_BASE = '../';
+    </script>
+</head>
+<!-- END Head -->
+
+
+<body class="sidebar-disabled navbar-disabled footer-disabled loading">
+    <div id="initial-loader">
+    <div>
+        <div class="initial-loader-top">
+            <img class="initial-loader-logo" src="../assets/images/spin-logo-inverted.png" alt="Loader">
+            <div class="loader loader--style1">
+                <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewbox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                    <g>
+                        <path fill="#2d2d2d" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z">
+                        <path fill="#2c97de" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">
+                        
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div class="initial-loader-bottom">
+            Loading. Please Wait. <i class="fa fa-cricle" style="opacity: 0"></i>
+        </div>
+    </div>
+</div>
+
+    <!-- Bower Libraries Scripts -->
+    <script src="../assets/vendor/js/lib.min.js"></script>
+
+    <div class="main-wrap">
+      
+
+        <div class="content">
+            <div class="container-fluid">
+    <a class="btn btn-default m-t-2 m-b-1 action-navigate-back" href="#" role="button"><i class="fa fa-angle-left m-r-1"></i> Back</a>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default b-a-2 no-bg b-gray-dark">
+                <div class="panel-heading text-center">
+                    <a href="../index.html"> <img src="../assets/images/spin-logo-inverted-@2X.png" alt="Logo" class="m-t-3 m-b-3 h-20"></a>
+                </div>
+                <div class="panel-body">
+                    <h2 class="text-center f-w-300 m-b-0"> Login</h2>
+                    <p class="text-center m-b-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <form class="m-t-3">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Enter a Username or Email...">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Your Password...">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember Password?
+                            </label>
+                        </div>
+                        <a href="../index.html" role="button" class="btn btn-block m-b-2 btn-primary">Login</a>
+                    </form>
+                </div>
+                <div class="panel-footer b-a-0 b-r-a-0">
+                    <a href="../pages/forgot-password.html">Forgot Password?</a>
+                    <a href="../pages/register.html" class="pull-right">Register</a>
+                </div>
+            </div>
+            <p class="text-gray-light text-center"><strong>SPIN Dashboard </strong> <span class="text-gray-light">&#xA9; 2009 - 2016. Made by <i class="fa fa-fw fa-heart text-danger"></i> New York, US</span></p>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+
+
+    </div>
+    <script>
+        // Hide loader
+        (function() {
+            var bodyElement = document.querySelector('body');
+            bodyElement.classList.add('loading');
+
+            document.addEventListener('readystatechange', function() {
+                if(document.readyState === 'complete') {
+                    var bodyElement = document.querySelector('body');
+                    var loaderElement = document.querySelector('#initial-loader');
+
+                    bodyElement.classList.add('loaded');
+                    setTimeout(function() {
+                        bodyElement.removeChild(loaderElement);
+                        bodyElement.classList.remove('loading', 'loaded');
+                    }, 200);
+                }
+            });
+        })();
+    </script>
+
+    <!-- Bower Libraries Styles -->
+    <link rel="stylesheet" href="../assets/vendor/css/lib.min.css">
+
+    <script src="../assets/javascript/app.min.13a3a368.js"></script>
+
+    <script src="../assets/javascript/plugins-init.js"></script>
+    <script src="../assets/javascript/switchery-settings.js"></script>
+</body>
+
+</html>

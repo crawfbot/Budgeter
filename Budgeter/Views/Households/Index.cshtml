@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Budgeter.Models.Household>
+
+@{
+    ViewBag.Title = "Household";
+}
+
+<br />
+
+<div class="container custbg shadow">
+    <div class="row">
+        <div class="col-lg-12">
+            @*<p>
+                    DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, and will add advanced interaction controls to any HTML table.
+                </p>*@
+            <!-- START Zero Configuration -->
+
+            <h2 class="m-t-3 text-center">Households <a href="@Url.Action("Create")" title="Add Household"> <i class="fa fa-plus-circle text-success" aria-hidden="true"></i> </a> </h2>
+
+            @*<p class="m-b-2">DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <kbd>$().DataTable();</kbd></p>*@
+
+            <table class="display table DTable">
+                <thead>
+                    <tr>
+                      
+                        <th>Name</th>
+                       
+                        <th>Created</th>
+                        <th>Updated</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                           
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                           
+                            <td>@Html.DisplayFor(modelItem => item.Created)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Updated)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <!-- END Zero Configuration -->
+
+        </div>
+    </div>
+    <!-- END EDIT CONTENT -->
+</div>
+
+@section scripts {
+
+    <script>
+        $('.DTable').DataTable();
+    </script>
+
+}

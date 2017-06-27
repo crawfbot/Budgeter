@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Budgeter.Models.Transaction>
+
+@{
+    ViewBag.Title = "Transactions";
+}
+
+<head>
+
+
+</head>
+
+<br />
+<div class="container custbg shadow">
+    <div class="row">
+        <div class="col-lg-12">
+            @*<p>
+                    DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, and will add advanced interaction controls to any HTML table.
+                </p>*@
+            <!-- START Zero Configuration -->
+
+            <h2 class="m-t-3 text-center">Transactions <a href="@Url.Action("Create")" title="Add Transaction"> <i class="fa fa-plus-circle text-success" aria-hidden="true"></i> </a></h2>
+
+            @*<p class="m-b-2">DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <kbd>$().DataTable();</kbd></p>*@
+
+            <div>
+                <div>
+
+                    <div class="col-lg-3" style="padding-left: 0px;">Search by Amount Range</div>
+                    <div class="col-lg-2 col-lg-offset-7" style="padding-right: 0px;">Search by Date Range</div>
+
+
+                </div>
+                <div>
+                    <div class="col-lg-2" style="padding-left: 0px;">
+
+                        <input type="text" class="form-control" id="min" name="min" placeholder="Min (#)">
+
+                        <input type="text" class="form-control" id="max" name="max" placeholder="Max (#)">
+
+
+
+                    </div>
+                    <div class="col-lg-2 col-lg-offset-8" style="padding-right: 0px;">
+
+
+                        <input type="text" class="form-control" id="low" name="low" placeholder="Low (D/M/YYYY)">
+
+                        <input type="text" class="form-control" id="high" name="high" placeholder="High (D/M/YYYY)">
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            
+
+
+            <table class="display table DTable">
+                <thead>
+                    <tr>
+                        <th>Account</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Reconciled Amount</th>
+                        <th>Entered By</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Account.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Category.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TransactionType.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ReconciledAmount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EnteredBy.FirstName)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <!-- END Zero Configuration -->
+
+        </div>
+    </div>
+    <!-- END EDIT CONTENT -->
+</div>
+
+
+
+@section scripts {
+
+    @*<script>
+            $('.DTable').DataTable();
+        </script>*@
+
+    <script>
+        $.fn.dataTable.moment('D/M/YYYY');
+
+        /* Custom filtering function which will search data in column four between two values */
+        // Will not work for very large numbers 
+        $.fn.dataTable.ext.search.push(
+            function (settings, data, dataIndex) {
+                var min = parseInt($('#min').val(), 10);
+                var max = parseInt($('#max').val(), 10);
+
+                var amount = parseFloat(data[4].match(/(\d+\.?\d+)/)) || 0; // use data for the amount column
+
+                if ((isNaN(min) && isNaN(max)) ||
+                     (isNaN(min) && amount <= max) ||
+                     (min <= amount && isNaN(max)) ||
+                     (min <= amount && amount <= max)) {
+                    return true;
+                }
+                return false;
+            }
+        );
+
+        /* Custom filtering function which will search data in column four between two values */
+        $.fn.dataTable.ext.search.push(
+            function (settings, data, dataIndex) {
+
+                var low = moment($('#low').val()).dayOfYear() + (365.25 * moment($('#low').val()).year());
+                var high = moment($('#high').val()).dayOfYear() + (365.25 * moment($('#high').val()).year());
+                var date = moment(data[1]).dayOfYear() + (365.25 * moment(data[1]).year()) || 0; // use data for the date column
+
+                if ((isNaN(low) && isNaN(high)) ||
+                     (isNaN(low) && date <= high) ||
+                     (low <= date && isNaN(high)) ||
+                     (low <= date && date <= high)) {
+                    return true;
+                }
+                return false;
+            }
+        );
+
+        $(document).ready(function () {
+            var table = $('.DTable').DataTable();
+
+            // Event listener to the two range filtering inputs to redraw on input
+            $('#min, #max').keyup(function () {
+                table.draw();
+            });
+
+            // Event listener to the two range filtering inputs to redraw on input
+            $('#low, #high').change(function () {
+                table.draw();
+            });
+        });
+
+    </script>
+
+}
+

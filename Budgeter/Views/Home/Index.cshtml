@@ -1,0 +1,665 @@
+﻿@model Budgeter.Models.DashboardViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+
+
+
+<!-- START Sub-Navbar with Header and Breadcrumbs-->
+@*<div class="sub-navbar sub-navbar__header-breadcrumbs metal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 sub-navbar-column">
+                    <div class="sub-navbar-header">
+                        <h2>Welcome!</h2>
+                    </div>
+
+                    <ol class="breadcrumb navbar-text navbar-right no-bg">
+                        <li class="current-parent">
+                            <a class="current-parent" href="index.html">
+                                <i class="fa fa-fw fa-home"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Folder
+                            </a>
+                        </li>
+                        <li class="active">Starter HTML/CSS</li>
+                    </ol>
+
+                </div>
+            </div>
+        </div>
+    </div>*@
+<!-- END Sub-Navbar with Header and Breadcrumbs-->
+
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <!-- START ROW "Your Cash" Header -->
+            @*<div class="row m-b-2">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <h4 class="m-b-0 m-t-0 f-w-300">Your Cash</h4>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 col-xs-offset-4 col-sm-offset-4 col-md-offset-4 text-right">
+                        <button type="button" class="btn btn-sm btn-default">USD<i class="fa m-l-1 fa-caret-down"></i> </button>
+                    </div>
+                </div>*@
+            <!-- END ROW "Your Cash" Header -->
+            <!-- START ROW "Your Cash" Panels -->
+            <div class="row">
+                <br />
+                <!-- START Main Fundings -->
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="panel panel-default b-a-0 custbg">
+                        <div class="panel-heading">All Accounts Total</div>
+                        <div class="panel-body">
+                            <h2 class="m-t-0 f-w-300">
+                                <span>
+                                    @if (ViewBag.AccountsTotal != null)
+                                    {
+                                        @(((decimal)ViewBag.AccountsTotal).ToString("C2"))
+                                    }
+                                    else
+                                    {
+                                        <strong>$0</strong>
+                                    }
+                                </span>
+                            </h2>
+                            @*<i class="fa fa-fw fa-caret-up text-success"></i> <span>$ 284.00</span>*@
+                        </div>
+                    </div>
+                </div>
+                <!-- END Main Fundings -->
+                <!-- START Invoices -->
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="panel panel-default b-a-0 custbg">
+                        <div class="panel-heading">All Debits Total</div>
+                        <div class="panel-body">
+                            <h2 class="m-t-0 f-w-300">
+                                <span>
+                                    @if (ViewBag.DebitsTotal != null)
+                                    {
+                                        @(((decimal)ViewBag.DebitsTotal).ToString("C2"))
+                                    }
+                                    else
+                                    {
+                                        <strong>$0</strong>
+                                    }
+                                </span>
+                            </h2>
+                            @*<i class="fa fa-fw fa-caret-down text-danger"></i> <span>$ 828.00</span>*@
+                        </div>
+                    </div>
+                </div>
+                <!-- END Invoices -->
+                <!-- START Accounts Receiveable -->
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="panel panel-default b-a-0 custbg">
+                        <div class="panel-heading">All Credits Total</div>
+                        <div class="panel-body">
+                            <h2 class="m-t-0 f-w-300">
+                                <span>
+                                    @if (ViewBag.CreditsTotal != null)
+                                    {
+                                        @(((decimal)ViewBag.CreditsTotal).ToString("C2"))
+                                    }
+                                    else
+                                    {
+                                        <strong>$0</strong>
+                                    }
+                                </span>
+                            </h2>
+                            @*<i class="fa fa-fw fa-caret-up text-success"></i> <span>$ 663.00</span>*@
+                        </div>
+                    </div>
+                </div>
+                <!-- END Accounts Receiveable -->
+                <!-- START Secure Holdings -->
+                @*<div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="panel panel-default b-a-0 custbg">
+                            <div class="panel-heading">?</div>
+                            <div class="panel-body">
+                                <h2 class="m-t-0 f-w-300">
+                                    <span>$ 7.00</span>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>*@
+                <!-- END Secure Holdings -->
+
+            </div>
+            <!-- END ROW "Your Cash" Panels -->
+        </div>
+    </div>
+</div>
+
+
+<br />
+
+<div class="container custbg shadow">
+    <div class="row">
+        <div class="col-lg-12">
+
+
+            <!-- START ROW "Money Map" & "Recent Map" -->
+            <div class="row">
+                <!-- START ROW "Money Map" -->
+                <!-- PIE CHART-->
+                <div class="col-lg-6">
+                    <!-- START ROW Header -->
+                    <div class="row m-b-2">
+                        <div class="col-md-12">
+                            <h4 class="m-b-0 f-w-300 text-center">Total Household Expenditures By Category <i class="fa fa-pie-chart"></i></h4>
+                        </div>
+
+                    </div>
+                    <!-- END ROW  Header -->
+
+                    <div class="panel panel-default b-a-2 b-gray-dark no-bg">
+                        @*<div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7 col-xs-7">
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <button type="button" class="btn btn-sm btn-default">Last Month</button>
+                                                <button type="button" class="btn btn-sm btn-default">This Month</button>
+                                                <button type="button" class="btn btn-sm btn-default">Today</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-3 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 text-right">
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <button type="button" class="btn btn-sm btn-default"><i class="fa fa-pie-chart"></i></button>
+                                                <button type="button" class="btn btn-sm btn-default"><i class="fa fa-bar-chart"></i></button>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>*@
+                        <div class="panel-body">
+                            <div class="highcharts-pie-with-legend-money-map"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END ROW "Money Map" -->
+                <!-- //PIE CHART-->
+
+                <div class="col-lg-6">
+                    <!-- BAR CHART -->
+                    <!-- START ROW Header -->
+                    <div class="row m-b-2">
+                        <div class="col-md-12">
+                            <h4 class="m-b-0 f-w-300 text-center">Household Income Per Quarter <i class="fa fa-bar-chart"></i></h4>
+                        </div>
+
+
+                    </div>
+                    <!-- END ROW "Your Cash" Header -->
+                    <div class="panel panel-default b-a-2 b-gray-dark no-bg">
+                        @*<div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7 col-xs-7">
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <button type="button" class="btn btn-sm btn-default">Last Month</button>
+                                                <button type="button" class="btn btn-sm btn-default">This Month</button>
+                                                <button type="button" class="btn btn-sm btn-default">Today</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-3 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 text-right">
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <button type="button" class="btn btn-sm btn-default"><i class="fa fa-pie-chart"></i></button>
+                                                <button type="button" class="btn btn-sm btn-default"><i class="fa fa-bar-chart"></i></button>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>*@
+                        <div class="panel-body">
+                            <div class="highcharts-stacked-column"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // END BAR CHART -->
+                <!-- END ROW "Money Map" -->
+
+            </div>
+            <!-- END ROW "Money Map" & "Recent Funding" -->
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="container custbg shadow">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- START ROW "Account Performance" & "Dashboard Settings" -->
+            <div class="row">
+                <!-- START ROW "Account Performance" -->
+                <div class="col-lg-12">
+                    <!-- START ROW "Account Performance" Header -->
+                    <div class="row m-b-2">
+                        <div class="col-md-12 text-center">
+                            <h4 class="m-b-0 f-w-300">Actual Expenditures Vs. Budgeted Expenditures  <i class="fa fa-bar-chart"></i></h4>
+                        </div>
+
+                    </div>
+                    <!-- END ROW "Account Performance" Header -->
+                    <div class="panel panel-default b-a-2 b-gray-dark no-bg">
+                        <div class="panel-body">
+                            <div class="highcharts-basic-column-alt"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END ROW "Account Performance" -->
+
+            </div>
+            <!-- END ROW "Account Performance" & "Dashboard Settings" -->
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="container custbg shadow">
+    <div class="row">
+        <div class="col-lg-12">
+            @*<p>
+                    DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, and will add advanced interaction controls to any HTML table.
+                </p>*@
+            <!-- START Zero Configuration -->
+
+            <h2 class="m-t-3 text-center">Recent Transactions</h2>
+
+            @*<p class="m-b-2">DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <kbd>$().DataTable();</kbd></p>*@
+
+            <table class="display table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Account</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transaction in Model.Transactions.Reverse().Take(10))
+                    {
+                    <tr>
+                        <td>@transaction.Account.Name</td>
+                        <td>@transaction.Date</td>
+                        <td>@transaction.Category.Name</td>
+                        <td>@transaction.TransactionType.Name</td>
+                        <td>@(((decimal)transaction.Amount).ToString("C2"))</td>
+
+                        <td>
+                            <div class="centered">
+
+                                @Html.ActionLink("View Details", "Details", "Transactions", new { id = transaction.Id }, new { @class = "btn btn-default" })
+
+
+
+                            </div>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+            <!-- END Zero Configuration -->
+
+        </div>
+    </div>
+    <!-- END EDIT CONTENT -->
+</div>
+
+<br />
+
+
+
+
+@section scripts {
+    <script src="~/Assets/vendor/js/highstock.min.js"></script>
+    <script src="~/Assets/javascript/highcharts&highstock-theme.js"></script>
+    @*<script src="~/Assets/javascript/highcharts-settings.js"></script>*@
+
+    <script>
+        $('.DTable').DataTable();
+    </script>
+
+
+    <script>
+
+        // Pie with Legend used on financial.html (panel: Money Map)
+        Dashboard.Helpers.elementExists('.highcharts-pie-with-legend-money-map', function () {
+            // Build the chart
+            $(this).highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    backgroundColor: 'transparent',
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie',
+                    height: 300
+                },
+                title: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false
+                },
+                legend: {
+                    align: 'right',
+                    verticalAlign: 'top',
+                    layout: 'vertical',
+                    x: 0,
+                    y: 100
+                },
+                exporting: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: '<b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        borderColor: '#212121',
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: false
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: 'Expenditures',
+                    colorByPoint: true,
+                    data: [{
+                        name: 'Food',
+                        y: @ViewBag.Food,
+                        color: '#2E9BDA'
+                    }, {
+                        name: 'Housing',
+                        y: @ViewBag.Housing,
+                        sliced: true,
+                        selected: true,
+                        color: '#3BBDA8'
+                    }, {
+                        name: 'Emergency',
+                        y: @ViewBag.Emergency,
+                        color: '#CB3E4B'
+                    }, {
+                        name: 'Utilities',
+                        y: @ViewBag.Utilities,
+                        color: '#A072FC'
+                    }, {
+                        name: 'Automobile',
+                        y: @ViewBag.Auto,
+                        color: '#FDFD96'
+                    }, {
+                        name: 'Debt Repayments',
+                        y: @ViewBag.Debt,
+                        color: '#FFB347'
+                    }, {
+                        name: 'Insurance',
+                        y: @ViewBag.Insurance,
+                        color: '#C8D5B9'
+                    }, {
+                        name: 'Misc',
+                        y: @ViewBag.Misc,
+                        color: '#FCF9EF'
+                    }, {
+                        name: 'Tax',
+                        y: @ViewBag.Tax,
+                        color: '#aaeeee'
+                    }]
+                }]
+            });
+        });
+
+        ////////////////////////////////////////////////////////
+        var fyArray = new Array();
+
+        @foreach (var num in @ViewBag.Income)
+        {
+
+            @:fyArray.push(@num)
+                }
+
+        console.log(fyArray);
+
+        ////////////////////////////////////////////////////////
+
+
+        Dashboard.Helpers.elementExists('.highcharts-stacked-column', function () {
+            $(this).highcharts({
+                chart: {
+                    type: 'column',
+                    backgroundColor: 'transparent',
+                    height: 300
+                },
+                title: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                xAxis: {
+                    categories: ['Q1', 'Q2', 'Q3', 'Q4']
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    }
+
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    headerFormat: '<b>{point.x}</b><br/>',
+                    pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal'
+                    }
+                },
+                series: [{
+                    name: 'M3', //March, June, September, December
+                    //data: [125000, 150000, 100000, 175000],
+                    data: [fyArray[2], fyArray[5], fyArray[7], fyArray[11]],
+                    borderColor: '#212121'
+                }, {
+                    name: 'M2', //February, May, August, November
+                    //data: [75000, 30000, 60000, 45000],
+                    data: [fyArray[1], fyArray[4], fyArray[7], fyArray[10]],
+                    borderColor: '#212121'
+                }, {
+                    name: 'M1', //January, April, July, October
+                    //data: [100000, 50000, 75000, 80000],
+                    data: [fyArray[0], fyArray[3], fyArray[6], fyArray[9]],
+                    borderColor: '#212121',
+                    color: '#A072FC'
+                }]
+            });
+        });
+
+        Dashboard.Helpers.elementExists('.highcharts-basic-column-alt', function() {
+            $(this).highcharts({
+                chart: {
+                    type: 'column',
+                    backgroundColor: 'transparent',
+                    height: 300
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                xAxis: {
+                    categories: [
+                        'Food',
+                        'Housing',
+                        'Emergency',
+                        'Utilities',
+                        'Automobile',
+                        'Debt Repay',
+                        'Insurance',
+                        'Misc',
+                        'Tax'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b> ${point.y:.1f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: 'Budgeted',
+                    data: [@ViewBag.FoodB, @ViewBag.HousingB, @ViewBag.EmergencyB, @ViewBag.UtilitiesB, @ViewBag.AutoB, @ViewBag.DebtB, @ViewBag.InsuranceB, @ViewBag.MiscB, @ViewBag.TaxB]
+
+                }, {
+                    name: 'Actual',
+                    data: [@ViewBag.Food, @ViewBag.Housing, @ViewBag.Emergency, @ViewBag.Utilities, @ViewBag.Auto, @ViewBag.Debt, @ViewBag.Insurance, @ViewBag.Misc, @ViewBag.Tax]
+
+                }]
+            });
+        });
+
+        // Chart Area with Missing Points used in "Account Performance" in: financial.html
+        Dashboard.Helpers.elementExists('.highcharts-area-with-missing-points', function () {
+            $(this).highcharts({
+                chart: {
+                    type: 'area',
+                    spacingBottom: 30,
+                    backgroundColor: 'transparent',
+                    height: 300
+                },
+                title: {
+                    text: ''
+                },
+                exporting: {
+                    enabled: false
+                },
+                subtitle: {
+                    text: '',
+                    floating: true,
+                    align: 'right',
+                    verticalAlign: 'bottom',
+                    y: 15
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    verticalAlign: 'top',
+                    x: 150,
+                    y: 100,
+                    floating: true,
+                    borderWidth: 0,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                },
+                xAxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value;
+                        }
+                    }
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            this.x + ': ' + this.y;
+                    }
+                },
+                plotOptions: {
+                    area: {
+                        fillOpacity: 0.5
+                    }
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Actual',
+                    data: [0, 1, 4, 4, 5, 2, 3, 7, 8, 3, 5, 6],
+                    lineWidth: '1',
+                    color: '#CB3E4B',
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, 'rgba(203,62,75,.2)'],
+                            [1, 'rgba(203,62,75,0)']
+                        ]
+                    }
+                }, {
+                    name: 'Budgeted',
+                    data: [8, 6, 12, 7, 3, 1, 2, 1, 9, 5, 12, 9],
+                    lineWidth: '1',
+                    color: '#3BBDA8',
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, 'rgba(59,189,168,.2)'],
+                            [1, 'rgba(59,189,168,0)']
+                        ]
+                    }
+                }]
+            });
+        });
+
+    </script>
+
+}
